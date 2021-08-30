@@ -1,0 +1,18 @@
+BEGIN TRANSACTION
+SELECT *from lgcustomer
+commit TRANSACTION
+
+BEGIN TRANSACTION
+ROLLBACK TRANSACTION
+
+/* INNER JOIN Two Tables */
+SELECT lginvoice.inv_num, lgcustomer.cust_code, lginvoice.inv_date
+FROM lginvoice
+INNER JOIN lgcustomer ON lginvoice.cust_code=lgcustomer.cust_code;
+
+/* INNER JOIN Three Tables */
+SELECT lginvoice.inv_num, lgcustomer.cust_code, lgemployee.emp_lname
+FROM ((lginvoice
+INNER JOIN lgcustomer ON lginvoice.cust_code=lgcustomer.cust_code)
+INNER JOIN lgemployee on lginvoice.cust_code=
+
